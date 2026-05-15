@@ -66,3 +66,16 @@ en:
       view: "View"
       edit: "Edit"
       delete: "Delete"
+
+  asset_items:
+    section: "Item Details Table"
+    no: "No."
+    item_details: "Item Details"
+    is_consumable: "Consumable"
+    is_custody: "Custody"
+    quantity: "Quantity"
+    is_new: "New"
+    is_used: "Used"
+    add_row: "+ Add Row"
+    remove: "Remove"
+    empty: "No items added yet."

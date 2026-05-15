@@ -1,0 +1,38 @@
+<tr class="border-b border-slate-100 hover:bg-slate-50">
+  <td class="px-3 py-2 text-center text-sm text-slate-500 w-10">
+    <span data-row-number></span>
+  </td>
+  <td class="px-3 py-2 min-w-48">
+    <%= f.text_field :item_details,
+          class: "block w-full rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+  </td>
+  <td class="px-3 py-2 text-center">
+    <%= f.check_box :is_consumable,
+          class: "w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" %>
+  </td>
+  <td class="px-3 py-2 text-center">
+    <%= f.check_box :is_custody,
+          class: "w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" %>
+  </td>
+  <td class="px-3 py-2 w-24">
+    <%= f.number_field :quantity, min: 0,
+          class: "block w-full rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-sm text-slate-900 text-center focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+  </td>
+  <td class="px-3 py-2 text-center">
+    <%= f.check_box :is_new,
+          class: "w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" %>
+  </td>
+  <td class="px-3 py-2 text-center">
+    <%= f.check_box :is_used,
+          class: "w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" %>
+  </td>
+  <%= f.hidden_field :_destroy, value: "0" %>
+  <td class="px-3 py-2 text-center">
+    <button type="button"
+            data-action="click->nested-form#removeRow"
+            class="text-red-400 hover:text-red-600 transition text-lg leading-none cursor-pointer"
+            title="<%= t('asset_items.remove') %>">
+      &times;
+    </button>
+  </td>
+</tr>

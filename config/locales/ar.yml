@@ -66,3 +66,16 @@ ar:
       view: "عرض"
       edit: "تعديل"
       delete: "حذف"
+
+  asset_items:
+    section: "جدول بيانات الأصناف"
+    no: "م"
+    item_details: "بيانات الأصناف"
+    is_consumable: "استهلاكية"
+    is_custody: "عهدة"
+    quantity: "العينية"
+    is_new: "جديد"
+    is_used: "مستعمل"
+    add_row: "+ إضافة صف"
+    remove: "حذف"
+    empty: "لم تتم إضافة أصناف بعد."

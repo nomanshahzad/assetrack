@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_15_142219) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_15_171002) do
+  create_table "asset_items", force: :cascade do |t|
+    t.integer "asset_id", null: false
+    t.datetime "created_at", null: false
+    t.boolean "is_consumable", default: false, null: false
+    t.boolean "is_custody", default: false, null: false
+    t.boolean "is_new", default: false, null: false
+    t.boolean "is_used", default: false, null: false
+    t.string "item_details"
+    t.integer "quantity"
+    t.datetime "updated_at", null: false
+    t.index ["asset_id"], name: "index_asset_items_on_asset_id"
+  end
+
   create_table "assets", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.date "delivered_by_date"
@@ -44,5 +57,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_15_142219) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "asset_items", "assets"
   add_foreign_key "sessions", "users"
 end

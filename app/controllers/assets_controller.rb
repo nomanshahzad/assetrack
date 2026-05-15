@@ -55,7 +55,11 @@ class AssetsController < ApplicationController
       :delivered_by_name,
       :delivered_by_date,
       :received_by_name,
-      :received_by_date
+      :received_by_date,
+      asset_items_attributes: [
+        :id, :item_details, :is_consumable, :is_custody,
+        :quantity, :is_new, :is_used, :_destroy
+      ]
     )
   end
 end
