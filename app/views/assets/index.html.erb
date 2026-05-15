@@ -3,10 +3,10 @@
   <%# Page header %>
   <div class="flex items-center justify-between mb-6">
     <div>
-      <h1 class="text-2xl font-bold text-slate-900">Asset Handover Forms</h1>
-      <p class="mt-1 text-sm text-slate-500"><%= @assets.count %> form<%= @assets.count == 1 ? "" : "s" %> submitted</p>
+      <h1 class="text-2xl font-bold text-slate-900"><%= t("assets.index.title") %></h1>
+      <p class="mt-1 text-sm text-slate-500"><%= t("assets.index.subtitle", count: @assets.count, default: "#{@assets.count} forms") %></p>
     </div>
-    <%= link_to "New Form", new_asset_path, class: "flex items-center gap-2 px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white text-sm font-semibold shadow-sm transition" %>
+    <%= link_to t("assets.index.new_button"), new_asset_path, class: "flex items-center gap-2 px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white text-sm font-semibold shadow-sm transition" %>
   </div>
 
   <%# Flash notice %>
@@ -26,11 +26,11 @@
       <table class="w-full text-sm">
         <thead>
           <tr class="bg-slate-50 border-b border-slate-200">
-            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Date</th>
-            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Receiver</th>
-            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Employee #</th>
-            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Branch / Dept</th>
-            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Type</th>
+            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide"><%= t("assets.table.date") %></th>
+            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide"><%= t("assets.table.receiver") %></th>
+            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide"><%= t("assets.table.employee_number") %></th>
+            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide"><%= t("assets.table.branch_dept") %></th>
+            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide"><%= t("assets.table.type") %></th>
             <th class="px-5 py-3"></th>
           </tr>
         </thead>
@@ -46,10 +46,10 @@
               <td class="px-5 py-4">
                 <div class="flex flex-wrap gap-1.5">
                   <% if asset.is_consumable? %>
-                    <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700">Consumable</span>
+                    <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700"><%= t("assets.badges.consumable") %></span>
                   <% end %>
                   <% if asset.is_custody? %>
-                    <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700">Custody</span>
+                    <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700"><%= t("assets.badges.custody") %></span>
                   <% end %>
                   <% unless asset.is_consumable? || asset.is_custody? %>
                     <span class="text-slate-400">—</span>
@@ -58,8 +58,8 @@
               </td>
               <td class="px-5 py-4 text-right whitespace-nowrap">
                 <div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition">
-                  <%= link_to "View", asset_path(asset), class: "text-indigo-600 hover:text-indigo-800 font-medium" %>
-                  <%= link_to "Edit", edit_asset_path(asset), class: "text-slate-500 hover:text-slate-700 font-medium" %>
+                  <%= link_to t("assets.actions.view"), asset_path(asset), class: "text-indigo-600 hover:text-indigo-800 font-medium" %>
+                  <%= link_to t("assets.actions.edit"), edit_asset_path(asset), class: "text-slate-500 hover:text-slate-700 font-medium" %>
                 </div>
               </td>
             </tr>
@@ -81,10 +81,10 @@
           </div>
           <div class="mt-3 flex flex-wrap gap-1.5">
             <% if asset.is_consumable? %>
-              <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700">Consumable</span>
+              <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700"><%= t("assets.badges.consumable") %></span>
             <% end %>
             <% if asset.is_custody? %>
-              <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700">Custody</span>
+              <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700"><%= t("assets.badges.custody") %></span>
             <% end %>
           </div>
         <% end %>
@@ -100,9 +100,9 @@
           <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0v10l-8 4m0-14L4 17m8 4V11" />
         </svg>
       </div>
-      <p class="text-slate-900 font-semibold">No forms submitted yet</p>
-      <p class="text-slate-500 text-sm mt-1">Create your first asset handover form to get started.</p>
-      <%= link_to "New Form", new_asset_path, class: "mt-5 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold shadow-sm transition" %>
+      <p class="text-slate-900 font-semibold"><%= t("assets.index.empty_title") %></p>
+      <p class="text-slate-500 text-sm mt-1"><%= t("assets.index.empty_description") %></p>
+      <%= link_to t("assets.index.new_button"), new_asset_path, class: "mt-5 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold shadow-sm transition" %>
     </div>
 
   <% end %>

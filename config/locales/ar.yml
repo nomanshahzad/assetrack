@@ -1,2 +1,68 @@
 ar:
-  hello: "مرحبا"
+  nav:
+    sign_out: "تسجيل الخروج"
+
+  assets:
+    index:
+      title: "نماذج تسليم الأصول"
+      subtitle_one: "نموذج واحد مقدم"
+      subtitle_other: "%{count} نماذج مقدمة"
+      new_button: "نموذج جديد"
+      empty_title: "لا توجد نماذج مقدمة بعد"
+      empty_description: "أنشئ أول نموذج تسليم للأصول للبدء."
+    new:
+      title: "نموذج تسليم أصول جديد"
+      breadcrumb: "نموذج جديد"
+    edit:
+      title: "تعديل نموذج تسليم الأصول"
+    show:
+      title: "نموذج تسليم الأصول"
+      no_type: "لم يتم تحديد النوع"
+      no_notes: "لا توجد ملاحظات"
+    form:
+      submit: "إرسال النموذج"
+      save: "حفظ التغييرات"
+      cancel: "إلغاء"
+      errors_one: "خطأ واحد منع حفظ النموذج:"
+      errors_other: "%{count} أخطاء منعت حفظ النموذج:"
+
+    sections:
+      date: "التاريخ"
+      receiver_information: "بيانات المستلم"
+      item_type: "نوع الصنف"
+      notes: "ملاحظات"
+      delivered_by: "التوقيع بالتسليم"
+      received_by: "التوقيع بالاستلام"
+
+    fields:
+      handover_date: "التاريخ"
+      receiver_name: "الاسم"
+      receiver_employee_number: "الرقم الوظيفي"
+      receiver_branch_department: "الفرع أو القسم"
+      is_consumable: "استهلاكية"
+      is_custody: "عهدة"
+      notes: "ملاحظات"
+      delivered_by_name: "الاسم"
+      delivered_by_date: "التاريخ"
+      received_by_name: "الاسم"
+      received_by_date: "التاريخ"
+
+    item_descriptions:
+      consumable: "الصنف يُستهلك عند الاستخدام"
+      custody: "الصنف مخصص ويجب إعادته"
+
+    badges:
+      consumable: "استهلاكية"
+      custody: "عهدة"
+
+    table:
+      date: "التاريخ"
+      receiver: "المستلم"
+      employee_number: "الرقم الوظيفي"
+      branch_dept: "الفرع / القسم"
+      type: "النوع"
+
+    actions:
+      view: "عرض"
+      edit: "تعديل"
+      delete: "حذف"

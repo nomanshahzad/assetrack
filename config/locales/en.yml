@@ -1,31 +1,68 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  nav:
+    sign_out: "Sign out"
+
+  assets:
+    index:
+      title: "Asset Handover Forms"
+      subtitle_one: "1 form submitted"
+      subtitle_other: "%{count} forms submitted"
+      new_button: "New Form"
+      empty_title: "No forms submitted yet"
+      empty_description: "Create your first asset handover form to get started."
+    new:
+      title: "New Asset Handover Form"
+      breadcrumb: "New Handover Form"
+    edit:
+      title: "Edit Asset Handover Form"
+    show:
+      title: "Asset Handover Form"
+      no_type: "No type selected"
+      no_notes: "No notes added"
+    form:
+      submit: "Submit Form"
+      save: "Save Changes"
+      cancel: "Cancel"
+      errors_one: "1 error prevented this form from being saved:"
+      errors_other: "%{count} errors prevented this form from being saved:"
+
+    sections:
+      date: "Date"
+      receiver_information: "Receiver Information"
+      item_type: "Item Type"
+      notes: "Notes"
+      delivered_by: "Delivered By"
+      received_by: "Received By"
+
+    fields:
+      handover_date: "Date"
+      receiver_name: "Name"
+      receiver_employee_number: "Employee Number"
+      receiver_branch_department: "Branch / Department"
+      is_consumable: "Consumable"
+      is_custody: "Custody / Assigned Asset"
+      notes: "Notes"
+      delivered_by_name: "Name"
+      delivered_by_date: "Date"
+      received_by_name: "Name"
+      received_by_date: "Date"
+
+    item_descriptions:
+      consumable: "Item is consumed on use"
+      custody: "Item is assigned and must be returned"
+
+    badges:
+      consumable: "Consumable"
+      custody: "Custody"
+
+    table:
+      date: "Date"
+      receiver: "Receiver"
+      employee_number: "Employee #"
+      branch_dept: "Branch / Dept"
+      type: "Type"
+
+    actions:
+      view: "View"
+      edit: "Edit"
+      delete: "Delete"

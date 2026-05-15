@@ -1,14 +1,13 @@
 <div class="max-w-4xl mx-auto">
 
-  <%# Page header %>
   <div class="flex items-center justify-between mb-6">
     <div>
       <div class="flex items-center gap-2 text-sm text-slate-500 mb-1">
-        <%= link_to "Assets", assets_path, class: "hover:text-slate-700 transition" %>
+        <%= link_to t("assets.index.title"), assets_path, class: "hover:text-slate-700 transition" %>
         <span>/</span>
-        <span class="text-slate-900 font-medium">New Handover Form</span>
+        <span class="text-slate-900 font-medium"><%= t("assets.new.breadcrumb") %></span>
       </div>
-      <h1 class="text-2xl font-bold text-slate-900">New Asset Handover Form</h1>
+      <h1 class="text-2xl font-bold text-slate-900"><%= t("assets.new.title") %></h1>
     </div>
   </div>
 
