@@ -9,11 +9,13 @@ class AssetsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = AssetPdf.new(@asset)
-        send_data pdf.render,
-          filename: "handover-form-#{@asset.id}.pdf",
-          type: "application/pdf",
-          disposition: "attachment"
+        render pdf: "handover-form-#{@asset.id}",
+               layout: "pdf",
+               encoding: "UTF-8",
+               page_size: "A4",
+               orientation: "Portrait",
+               margin: { top: 0, bottom: 0, left: 0, right: 0 },
+               disposition: "attachment"
       end
     end
   end
