@@ -100,6 +100,13 @@
     margin: 2mm 0 4mm;
     text-align: center;
   }
+  .item-val {
+    display: inline-block;
+    border-bottom: 1px solid #666;
+    min-width: 30mm;
+    vertical-align: bottom;
+    padding: 0 3px;
+  }
 
   /* ── Items table ── */
   .itable { width: 100%; border-collapse: collapse; margin-bottom: 4mm; }
@@ -214,11 +221,9 @@
 
   <%# ── Item Type ── %>
   <div class="item-type">
-    &nbsp;&nbsp;
-    <% if @asset.is_consumable? %>( استهلاكية &nbsp;&#10003; )<% else %>( استهلاكية )<% end %>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <% if @asset.is_custody? %>( عهدة &nbsp;&#10003; )<% else %>( عهدة )<% end %>
-    &nbsp;&nbsp;
+    استهلاكية :&nbsp;<span class="item-val"><%= raw(@asset.is_consumable? ? "&nbsp;&#10003;&nbsp;" : "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") %></span>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    عهدة :&nbsp;<span class="item-val"><%= raw(@asset.is_custody? ? "&nbsp;&#10003;&nbsp;" : "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") %></span>
   </div>
 
   <%# ── Items Table ── %>
