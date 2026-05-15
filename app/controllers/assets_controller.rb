@@ -6,6 +6,16 @@ class AssetsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = AssetPdf.new(@asset)
+        send_data pdf.render,
+          filename: "handover-form-#{@asset.id}.pdf",
+          type: "application/pdf",
+          disposition: "attachment"
+      end
+    end
   end
 
   def new

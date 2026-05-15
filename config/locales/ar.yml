@@ -68,6 +68,7 @@ ar:
       view: "عرض"
       edit: "تعديل"
       delete: "حذف"
+      download_pdf: "تحميل PDF"
 
   asset_items:
     section: "جدول بيانات الأصناف"
