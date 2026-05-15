@@ -54,8 +54,10 @@ class AssetsController < ApplicationController
       :notes,
       :delivered_by_name,
       :delivered_by_date,
+      :signature_delivered_by,
       :received_by_name,
       :received_by_date,
+      :signature_received_by,
       asset_items_attributes: [
         :id, :item_details, :is_consumable, :is_custody,
         :quantity, :is_new, :is_used, :_destroy

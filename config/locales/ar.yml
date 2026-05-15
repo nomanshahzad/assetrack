@@ -46,6 +46,8 @@ ar:
       delivered_by_date: "التاريخ"
       received_by_name: "الاسم"
       received_by_date: "التاريخ"
+      signature: "التوقيع"
+      clear_signature: "مسح"
 
     item_descriptions:
       consumable: "الصنف يُستهلك عند الاستخدام"

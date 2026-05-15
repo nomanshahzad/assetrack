@@ -137,14 +137,26 @@
     <div class="bg-slate-50 border-b border-slate-200 px-6 py-3">
       <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide"><%= t("assets.sections.delivered_by") %></h3>
     </div>
-    <div class="px-6 py-5 grid grid-cols-1 sm:grid-cols-2 gap-5">
-      <div>
-        <%= f.label :delivered_by_name, t("assets.fields.delivered_by_name"), class: "block text-sm font-medium text-slate-700 mb-1.5" %>
-        <%= f.text_field :delivered_by_name, placeholder: "Full name", class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+    <div class="px-6 py-5 space-y-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <%= f.label :delivered_by_name, t("assets.fields.delivered_by_name"), class: "block text-sm font-medium text-slate-700 mb-1.5" %>
+          <%= f.text_field :delivered_by_name, placeholder: "Full name", class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+        </div>
+        <div>
+          <%= f.label :delivered_by_date, t("assets.fields.delivered_by_date"), class: "block text-sm font-medium text-slate-700 mb-1.5" %>
+          <%= f.date_field :delivered_by_date, class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+        </div>
       </div>
-      <div>
-        <%= f.label :delivered_by_date, t("assets.fields.delivered_by_date"), class: "block text-sm font-medium text-slate-700 mb-1.5" %>
-        <%= f.date_field :delivered_by_date, class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+      <div data-controller="signature-pad">
+        <div class="flex items-center justify-between mb-1.5">
+          <span class="text-sm font-medium text-slate-700"><%= t("assets.fields.signature") %></span>
+          <button type="button" data-action="click->signature-pad#clear"
+                  class="text-xs text-slate-400 hover:text-red-500 transition cursor-pointer"><%= t("assets.fields.clear_signature") %></button>
+        </div>
+        <canvas data-signature-pad-target="canvas"
+                class="block w-full h-40 rounded-lg border border-slate-300 bg-white cursor-crosshair touch-none"></canvas>
+        <%= f.hidden_field :signature_delivered_by, data: { "signature-pad-target": "input" } %>
       </div>
     </div>
   </div>
@@ -154,14 +166,26 @@
     <div class="bg-slate-50 border-b border-slate-200 px-6 py-3">
       <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide"><%= t("assets.sections.received_by") %></h3>
     </div>
-    <div class="px-6 py-5 grid grid-cols-1 sm:grid-cols-2 gap-5">
-      <div>
-        <%= f.label :received_by_name, t("assets.fields.received_by_name"), class: "block text-sm font-medium text-slate-700 mb-1.5" %>
-        <%= f.text_field :received_by_name, placeholder: "Full name", class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+    <div class="px-6 py-5 space-y-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <%= f.label :received_by_name, t("assets.fields.received_by_name"), class: "block text-sm font-medium text-slate-700 mb-1.5" %>
+          <%= f.text_field :received_by_name, placeholder: "Full name", class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+        </div>
+        <div>
+          <%= f.label :received_by_date, t("assets.fields.received_by_date"), class: "block text-sm font-medium text-slate-700 mb-1.5" %>
+          <%= f.date_field :received_by_date, class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+        </div>
       </div>
-      <div>
-        <%= f.label :received_by_date, t("assets.fields.received_by_date"), class: "block text-sm font-medium text-slate-700 mb-1.5" %>
-        <%= f.date_field :received_by_date, class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+      <div data-controller="signature-pad">
+        <div class="flex items-center justify-between mb-1.5">
+          <span class="text-sm font-medium text-slate-700"><%= t("assets.fields.signature") %></span>
+          <button type="button" data-action="click->signature-pad#clear"
+                  class="text-xs text-slate-400 hover:text-red-500 transition cursor-pointer"><%= t("assets.fields.clear_signature") %></button>
+        </div>
+        <canvas data-signature-pad-target="canvas"
+                class="block w-full h-40 rounded-lg border border-slate-300 bg-white cursor-crosshair touch-none"></canvas>
+        <%= f.hidden_field :signature_received_by, data: { "signature-pad-target": "input" } %>
       </div>
     </div>
   </div>

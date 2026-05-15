@@ -46,6 +46,8 @@ en:
       delivered_by_date: "Date"
       received_by_name: "Name"
       received_by_date: "Date"
+      signature: "Signature"
+      clear_signature: "Clear"
 
     item_descriptions:
       consumable: "Item is consumed on use"

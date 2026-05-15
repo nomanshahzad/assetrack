@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_15_171002) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_15_193623) do
   create_table "asset_items", force: :cascade do |t|
     t.integer "asset_id", null: false
     t.datetime "created_at", null: false
@@ -37,6 +37,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_15_171002) do
     t.string "receiver_branch_department"
     t.string "receiver_employee_number"
     t.string "receiver_name"
+    t.text "signature_delivered_by"
+    t.text "signature_received_by"
     t.datetime "updated_at", null: false
   end
 
