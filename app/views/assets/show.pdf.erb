@@ -4,20 +4,19 @@
   @page { size: A4; margin: 0; }
 
   body {
-    width: 210mm;
-    height: 297mm;
+    margin: 0;
+    padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11pt;
     color: #1a1a1a;
-    direction: rtl;
     background: white;
   }
 
   /* ── Full-page frame ── */
   .page {
-    width: 198mm;
-    height: 285mm;
-    margin: 6mm auto;
+    width: 100%;
+    min-height: 283mm;
+    direction: rtl;
     border: 4px solid #1e7e34;
     padding: 7mm 9mm 6mm;
     position: relative;
@@ -148,14 +147,11 @@
 
   /* ── Footer ── */
   .footer {
-    position: absolute;
-    bottom: 6mm;
-    left: 9mm;
-    right: 9mm;
     font-size: 8pt;
     text-align: center;
     border-top: 1px solid #888;
     padding-top: 2mm;
+    margin-top: 4mm;
     color: #444;
   }
 </style>

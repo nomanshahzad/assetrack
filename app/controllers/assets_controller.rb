@@ -14,7 +14,7 @@ class AssetsController < ApplicationController
                encoding: "UTF-8",
                page_size: "A4",
                orientation: "Portrait",
-               margin: { top: 0, bottom: 0, left: 0, right: 0 },
+               margin: { top: 6, bottom: 6, left: 6, right: 6 },
                disposition: "attachment"
       end
     end
