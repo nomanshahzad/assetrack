@@ -1,0 +1,130 @@
+<%= form_with model: asset, class: "space-y-6" do |f| %>
+
+  <%# Validation errors %>
+  <% if asset.errors.any? %>
+    <div class="rounded-lg bg-red-50 border border-red-200 p-4">
+      <div class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+        </svg>
+        <div>
+          <p class="text-sm font-semibold text-red-700"><%= asset.errors.count %> error(s) prevented this form from being saved:</p>
+          <ul class="mt-1 list-disc list-inside text-sm text-red-600 space-y-0.5">
+            <% asset.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%# ── Section 1: Date ──────────────────────────────────────────────── %>
+  <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="bg-slate-50 border-b border-slate-200 px-6 py-3">
+      <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide">Date</h3>
+    </div>
+    <div class="px-6 py-5">
+      <div class="max-w-xs">
+        <%= f.label :handover_date, "Handover Date", class: "block text-sm font-medium text-slate-700 mb-1.5" %>
+        <%= f.date_field :handover_date, class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+      </div>
+    </div>
+  </div>
+
+  <%# ── Section 2: Receiver Information ─────────────────────────────── %>
+  <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="bg-slate-50 border-b border-slate-200 px-6 py-3">
+      <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide">Receiver Information</h3>
+    </div>
+    <div class="px-6 py-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div>
+        <%= f.label :receiver_name, "Name", class: "block text-sm font-medium text-slate-700 mb-1.5" %>
+        <%= f.text_field :receiver_name, placeholder: "Full name", class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+      </div>
+      <div>
+        <%= f.label :receiver_employee_number, "Employee Number", class: "block text-sm font-medium text-slate-700 mb-1.5" %>
+        <%= f.text_field :receiver_employee_number, placeholder: "e.g. EMP-0042", class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+      </div>
+      <div>
+        <%= f.label :receiver_branch_department, "Branch / Department", class: "block text-sm font-medium text-slate-700 mb-1.5" %>
+        <%= f.text_field :receiver_branch_department, placeholder: "e.g. Finance – HQ", class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+      </div>
+    </div>
+  </div>
+
+  <%# ── Section 3: Item Type ─────────────────────────────────────────── %>
+  <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="bg-slate-50 border-b border-slate-200 px-6 py-3">
+      <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide">Item Type</h3>
+    </div>
+    <div class="px-6 py-5 flex flex-col sm:flex-row gap-6">
+      <label class="flex items-center gap-3 cursor-pointer group">
+        <%= f.check_box :is_consumable, class: "w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" %>
+        <div>
+          <span class="block text-sm font-medium text-slate-800">Consumable</span>
+          <span class="block text-xs text-slate-500">Item is consumed on use</span>
+        </div>
+      </label>
+      <label class="flex items-center gap-3 cursor-pointer group">
+        <%= f.check_box :is_custody, class: "w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" %>
+        <div>
+          <span class="block text-sm font-medium text-slate-800">Custody / Assigned Asset</span>
+          <span class="block text-xs text-slate-500">Item is assigned and must be returned</span>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <%# ── Section 4: Notes ────────────────────────────────────────────── %>
+  <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="bg-slate-50 border-b border-slate-200 px-6 py-3">
+      <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide">Notes</h3>
+    </div>
+    <div class="px-6 py-5">
+      <%= f.text_area :notes, rows: 4, placeholder: "Any additional notes or remarks…", class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition resize-none" %>
+    </div>
+  </div>
+
+  <%# ── Section 5: Delivered By ─────────────────────────────────────── %>
+  <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="bg-slate-50 border-b border-slate-200 px-6 py-3">
+      <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide">Delivered By</h3>
+    </div>
+    <div class="px-6 py-5 grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div>
+        <%= f.label :delivered_by_name, "Name", class: "block text-sm font-medium text-slate-700 mb-1.5" %>
+        <%= f.text_field :delivered_by_name, placeholder: "Full name", class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+      </div>
+      <div>
+        <%= f.label :delivered_by_date, "Date", class: "block text-sm font-medium text-slate-700 mb-1.5" %>
+        <%= f.date_field :delivered_by_date, class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+      </div>
+    </div>
+  </div>
+
+  <%# ── Section 6: Received By ──────────────────────────────────────── %>
+  <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="bg-slate-50 border-b border-slate-200 px-6 py-3">
+      <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide">Received By</h3>
+    </div>
+    <div class="px-6 py-5 grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div>
+        <%= f.label :received_by_name, "Name", class: "block text-sm font-medium text-slate-700 mb-1.5" %>
+        <%= f.text_field :received_by_name, placeholder: "Full name", class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+      </div>
+      <div>
+        <%= f.label :received_by_date, "Date", class: "block text-sm font-medium text-slate-700 mb-1.5" %>
+        <%= f.date_field :received_by_date, class: "block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
+      </div>
+    </div>
+  </div>
+
+  <%# ── Submit ───────────────────────────────────────────────────────── %>
+  <div class="flex items-center justify-end gap-3 pt-2">
+    <%= link_to "Cancel", assets_path, class: "px-4 py-2.5 text-sm font-medium text-slate-700 hover:text-slate-900 transition" %>
+    <%= f.submit asset.new_record? ? "Submit Form" : "Save Changes",
+          class: "px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white text-sm font-semibold shadow-sm transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+  </div>
+
+<% end %>

@@ -1,0 +1,19 @@
+<div class="max-w-4xl mx-auto">
+
+  <%# Page header %>
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <div class="flex items-center gap-2 text-sm text-slate-500 mb-1">
+        <%= link_to "Assets", assets_path, class: "hover:text-slate-700 transition" %>
+        <span>/</span>
+        <%= link_to "Form ##{@asset.id}", asset_path(@asset), class: "hover:text-slate-700 transition" %>
+        <span>/</span>
+        <span class="text-slate-900 font-medium">Edit</span>
+      </div>
+      <h1 class="text-2xl font-bold text-slate-900">Edit Asset Handover Form</h1>
+    </div>
+  </div>
+
+  <%= render "form", asset: @asset %>
+
+</div>

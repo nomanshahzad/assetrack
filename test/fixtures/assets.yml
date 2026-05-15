@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  handover_date: 2026-05-15
+  receiver_name: MyString
+  receiver_employee_number: MyString
+  receiver_branch_department: MyString
+  is_consumable: false
+  is_custody: false
+  notes: MyText
+  delivered_by_name: MyString
+  delivered_by_date: 2026-05-15
+  received_by_name: MyString
+  received_by_date: 2026-05-15
+
+two:
+  handover_date: 2026-05-15
+  receiver_name: MyString
+  receiver_employee_number: MyString
+  receiver_branch_department: MyString
+  is_consumable: false
+  is_custody: false
+  notes: MyText
+  delivered_by_name: MyString
+  delivered_by_date: 2026-05-15
+  received_by_name: MyString
+  received_by_date: 2026-05-15
