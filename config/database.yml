@@ -21,19 +21,23 @@ test:
   database: storage/test.sqlite3
 
 # Production runs against a hosted PostgreSQL database (e.g. Neon), since the
-# free hosting target (Render) has no persistent disk. All four logical
-# databases share the same Postgres connection — solid_cache/queue/cable use
-# distinctly prefixed table names, so this is safe on a single database.
+# free hosting target (Render) has no persistent disk. Each logical database
+# needs its own separate Postgres database — sharing one physical database
+# across all four breaks migration tracking, since Rails records applied
+# migrations per database in a schema_migrations table.
 production:
-  primary: &production_default
+  primary:
     adapter: postgresql
     url: <%= ENV["DATABASE_URL"] %>
   cache:
-    <<: *production_default
+    adapter: postgresql
+    url: <%= ENV["CACHE_DATABASE_URL"] %>
     migrations_paths: db/cache_migrate
   queue:
-    <<: *production_default
+    adapter: postgresql
+    url: <%= ENV["QUEUE_DATABASE_URL"] %>
     migrations_paths: db/queue_migrate
   cable:
-    <<: *production_default
+    adapter: postgresql
+    url: <%= ENV["CABLE_DATABASE_URL"] %>
     migrations_paths: db/cable_migrate
