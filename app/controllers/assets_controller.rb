@@ -1,5 +1,6 @@
 class AssetsController < ApplicationController
   LOGOS = { "1" => "logo1.jpeg", "2" => "logo2.jpeg" }.freeze
+  LOGO_HEIGHTS = { "1" => 150, "2" => 190 }.freeze
 
   before_action :set_asset, only: %i[show edit update destroy]
 
@@ -12,6 +13,7 @@ class AssetsController < ApplicationController
       format.html
       format.pdf do
         @logo_filename = LOGOS.fetch(params[:logo], LOGOS["1"])
+        @logo_height = LOGO_HEIGHTS.fetch(params[:logo], LOGO_HEIGHTS["1"])
         render pdf: "handover-form-#{@asset.id}",
                layout: "pdf",
                encoding: "UTF-8",
