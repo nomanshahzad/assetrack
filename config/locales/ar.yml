@@ -69,8 +69,8 @@ ar:
       edit: "تعديل"
       delete: "حذف"
       download_pdf: "تحميل PDF"
-      download_pdf_logo1: "تحميل PDF (شعار 1)"
-      download_pdf_logo2: "تحميل PDF (شعار 2)"
+      download_pdf_logo1: "تحميل PDF (مجموعة الهنوف)"
+      download_pdf_logo2: "تحميل PDF (مؤسسة حراساتكم)"
 
   asset_items:
     section: "جدول بيانات الأصناف"

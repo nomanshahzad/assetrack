@@ -69,8 +69,8 @@ en:
       edit: "Edit"
       delete: "Delete"
       download_pdf: "Download PDF"
-      download_pdf_logo1: "Download PDF (Logo 1)"
-      download_pdf_logo2: "Download PDF (Logo 2)"
+      download_pdf_logo1: "Download PDF (Al Hanouf Group)"
+      download_pdf_logo2: "Download PDF (Herasatekom)"
 
   asset_items:
     section: "Item Details Table"
