@@ -11,12 +11,19 @@
       <h1 class="text-2xl font-bold text-slate-900"><%= t("assets.show.title") %></h1>
     </div>
     <div class="flex items-center gap-2 shrink-0">
-      <%= link_to asset_path(@asset, format: :pdf),
+      <%= link_to asset_path(@asset, format: :pdf, logo: 1),
             class: "flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-300 bg-white text-sm font-medium text-slate-700 hover:bg-slate-50 transition shadow-sm" do %>
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
         </svg>
-        <%= t("assets.actions.download_pdf") %>
+        <%= t("assets.actions.download_pdf_logo1") %>
+      <% end %>
+      <%= link_to asset_path(@asset, format: :pdf, logo: 2),
+            class: "flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-300 bg-white text-sm font-medium text-slate-700 hover:bg-slate-50 transition shadow-sm" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        <%= t("assets.actions.download_pdf_logo2") %>
       <% end %>
       <%= link_to t("assets.actions.edit"), edit_asset_path(@asset), class: "flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-300 bg-white text-sm font-medium text-slate-700 hover:bg-slate-50 transition shadow-sm" %>
       <%= button_to t("assets.actions.delete"), asset_path(@asset), method: :delete,

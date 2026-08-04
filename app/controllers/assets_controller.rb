@@ -1,4 +1,6 @@
 class AssetsController < ApplicationController
+  LOGOS = { "1" => "logo1.jpeg", "2" => "logo2.jpeg" }.freeze
+
   before_action :set_asset, only: %i[show edit update destroy]
 
   def index
@@ -9,6 +11,7 @@ class AssetsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
+        @logo_filename = LOGOS.fetch(params[:logo], LOGOS["1"])
         render pdf: "handover-form-#{@asset.id}",
                layout: "pdf",
                encoding: "UTF-8",
