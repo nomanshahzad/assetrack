@@ -4,13 +4,15 @@ class AssetsController < ApplicationController
       logo_filename: "logo1.jpeg",
       logo_height: 150,
       name_en: "AL HANOUF CONTRACTING GROUP",
-      name_ar: "مجموعة الهنوف للمقاولات"
+      name_ar: "مجموعة الهنوف للمقاولات",
+      side_graphic: true
     },
     "2" => {
       logo_filename: "logo2.jpeg",
       logo_height: 190,
       name_en: "HERASATEKOM EST. FOR SECURITY SERVICE",
-      name_ar: "مؤسسة حراساتكم للحراسات الأمنية"
+      name_ar: "مؤسسة حراساتكم للحراسات الأمنية",
+      side_graphic: false
     }
   }.freeze
 
@@ -29,6 +31,7 @@ class AssetsController < ApplicationController
         @logo_height = company[:logo_height]
         @company_name_en = company[:name_en]
         @company_name_ar = company[:name_ar]
+        @show_side_graphic = company[:side_graphic]
         render pdf: "handover-form-#{@asset.id}",
                layout: "pdf",
                encoding: "UTF-8",

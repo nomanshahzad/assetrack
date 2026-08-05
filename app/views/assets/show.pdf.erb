@@ -20,6 +20,17 @@
     z-index: 0;
   }
 
+  /* Decorative corner graphic, top-right of every page */
+  .pdf-side-corner {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 24mm;
+    height: auto;
+    pointer-events: none;
+    z-index: 2;
+  }
+
   /* ── Content ── */
   .page {
     width: 100%;
@@ -35,6 +46,7 @@
     width: 100%;
     margin-bottom: 5mm;
   }
+  .header--with-corner { padding-right: 14mm; }
   .header-ar, .header-logo, .header-en {
     display: table-cell;
     vertical-align: middle;
@@ -172,10 +184,14 @@
 </style>
 
 <div class="border-frame"></div>
+<% if @show_side_graphic %>
+  <% pdfside_b64 = Base64.strict_encode64(File.read(Rails.root.join("app", "assets", "images", "pdfside.gif"))) %>
+  <img class="pdf-side-corner" src="data:image/gif;base64,<%= pdfside_b64 %>">
+<% end %>
 <div class="page">
 
   <%# ── Header ── %>
-  <div class="header">
+  <div class="header <%= "header--with-corner" if @show_side_graphic %>">
     <div class="header-ar">
       <div class="ar-company-name"><%= @company_name_ar %></div>
     </div>
