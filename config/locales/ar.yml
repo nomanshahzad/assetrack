@@ -78,7 +78,7 @@ ar:
     item_details: "بيانات الأصناف"
     is_consumable: "استهلاكية"
     is_custody: "عهدة"
-    quantity: "العينية"
+    quantity: "الكمية"
     is_new: "جديد"
     is_used: "مستعمل"
     add_row: "+ إضافة صف"
