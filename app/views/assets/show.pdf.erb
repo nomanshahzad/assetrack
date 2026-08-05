@@ -286,7 +286,7 @@
         التوقيع :&nbsp;
         <% if @asset.signature_received_by.present? %>
           <span class="sig-img-wrap">
-            <img src="<%= @asset.signature_received_by %>" style="height:28px; max-width:62mm; vertical-align:bottom; display:block;">
+            <img src="<%= @asset.signature_received_by %>" style="height:44px; max-width:70mm; vertical-align:bottom; display:block;">
           </span>
         <% else %>
           <span class="sig-line">&nbsp;</span>
@@ -307,7 +307,7 @@
         التوقيع :&nbsp;
         <% if @asset.signature_delivered_by.present? %>
           <span class="sig-img-wrap">
-            <img src="<%= @asset.signature_delivered_by %>" style="height:28px; max-width:62mm; vertical-align:bottom; display:block;">
+            <img src="<%= @asset.signature_delivered_by %>" style="height:44px; max-width:70mm; vertical-align:bottom; display:block;">
           </span>
         <% else %>
           <span class="sig-line">&nbsp;</span>
