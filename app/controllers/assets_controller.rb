@@ -1,6 +1,18 @@
 class AssetsController < ApplicationController
-  LOGOS = { "1" => "logo1.jpeg", "2" => "logo2.jpeg" }.freeze
-  LOGO_HEIGHTS = { "1" => 150, "2" => 190 }.freeze
+  COMPANIES = {
+    "1" => {
+      logo_filename: "logo1.jpeg",
+      logo_height: 150,
+      name_en: "AL HANOUF CONTRACTING GROUP",
+      name_ar: "مجموعة الهنوف للمقاولات"
+    },
+    "2" => {
+      logo_filename: "logo2.jpeg",
+      logo_height: 190,
+      name_en: "HERASATEKOM EST. FOR SECURITY SERVICE",
+      name_ar: "مؤسسة حراساتكم للحراسات الأمنية"
+    }
+  }.freeze
 
   before_action :set_asset, only: %i[show edit update destroy]
 
@@ -12,8 +24,11 @@ class AssetsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        @logo_filename = LOGOS.fetch(params[:logo], LOGOS["1"])
-        @logo_height = LOGO_HEIGHTS.fetch(params[:logo], LOGO_HEIGHTS["1"])
+        company = COMPANIES.fetch(params[:logo], COMPANIES["1"])
+        @logo_filename = company[:logo_filename]
+        @logo_height = company[:logo_height]
+        @company_name_en = company[:name_en]
+        @company_name_ar = company[:name_ar]
         render pdf: "handover-form-#{@asset.id}",
                layout: "pdf",
                encoding: "UTF-8",
