@@ -21,8 +21,9 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  # Production uploads must use durable object storage. Container filesystems on
+  # hosts such as Render are replaced during deploys and restarts.
+  config.active_storage.service = ENV.fetch("ACTIVE_STORAGE_SERVICE", "amazon").to_sym
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
   # Required on Render, which terminates TLS and proxies to the container over plain HTTP.
