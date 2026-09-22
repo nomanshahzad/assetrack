@@ -1,4 +1,4 @@
-<%= form_with model: asset, class: "space-y-6" do |f| %>
+<%= form_with model: asset, multipart: true, class: "space-y-6" do |f| %>
 
   <%# Validation errors %>
   <% if asset.errors.any? %>
@@ -121,6 +121,8 @@
     </div>
 
   </div>
+
+  <%= render "photo_fields", f: f, asset: asset %>
 
   <%# ── Section 5: Notes ────────────────────────────────────────────── %>
   <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">

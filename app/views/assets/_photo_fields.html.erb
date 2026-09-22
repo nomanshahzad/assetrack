@@ -1,0 +1,32 @@
+<section class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden" data-controller="photos" data-photos-remove-label-value="<%= t('assets.photos.remove') %>">
+  <div class="bg-slate-50 border-b border-slate-200 px-6 py-3">
+    <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide"><%= t("assets.photos.title") %></h3>
+  </div>
+  <div class="px-6 py-5 space-y-4">
+    <p class="text-sm text-slate-500"><%= t("assets.photos.help") %></p>
+    <% if asset.errors.any? %>
+      <p class="text-sm text-red-600"><%= t("assets.photos.retry") %></p>
+    <% end %>
+    <div class="flex flex-wrap gap-3">
+      <button type="button" data-action="photos#take" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white cursor-pointer"><%= t("assets.photos.take") %></button>
+      <button type="button" data-action="photos#upload" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium cursor-pointer"><%= t("assets.photos.upload") %></button>
+    </div>
+    <div data-photos-target="inputs" hidden></div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4" data-photos-target="previews" aria-live="polite">
+      <% (@existing_photos || asset.photos.select(&:persisted?)).each do |photo| %>
+        <% marked_for_removal = Array(@photo_ids_to_remove).include?(photo.id.to_s) %>
+        <div class="space-y-2" data-photo-card <%= "hidden" if marked_for_removal %>>
+          <%= image_tag photo, alt: photo.filename.to_s, class: "w-full h-40 object-contain rounded-lg border border-slate-200" %>
+          <button type="button"
+                  data-action="photos#removePersisted"
+                  data-photo-id="<%= photo.id %>"
+                  class="text-sm text-red-600 cursor-pointer"><%= t("assets.photos.remove") %></button>
+        </div>
+        <% if marked_for_removal %>
+          <%= hidden_field_tag "asset[remove_photo_ids][]", photo.id %>
+        <% end %>
+      <% end %>
+    </div>
+    <noscript><%= f.file_field :photos, multiple: true, accept: "image/jpeg,image/png" %></noscript>
+  </div>
+</section>

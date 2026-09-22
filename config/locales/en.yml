@@ -3,6 +3,15 @@ en:
     sign_out: "Sign out"
 
   assets:
+    photos:
+      title: "Photos"
+      take: "Take Photo"
+      upload: "Upload Photos"
+      help: "Take more photos or select multiple files. JPEG or PNG, up to 15 MB each. Photos are uploaded when you save the form."
+      remove: "Remove"
+      retry: "Please select your new photos again after correcting the errors."
+      invalid_type: "must be JPEG or PNG images"
+      too_large: "must be smaller than 15 MB"
     index:
       title: "Asset Handover Forms"
       subtitle_one: "1 form submitted"

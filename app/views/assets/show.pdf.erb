@@ -2,7 +2,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
-    width: 100%;
+    width: 1024px;
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -11,16 +11,20 @@
     background: white;
   }
 
-  /* Fixed border that always spans the full page */
+  /* Give the last sheet the full printable A4 height even when it has one photo.
+     At a 1024px layout width, the 198 x 279mm print area is about 1442px tall.
+     Leave rounding room and extend the border slightly into the native footer. */
+  .page:last-of-type { min-height: 1440px; }
   .border-frame {
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border: 4px solid #1e7e34;
+    top: 0; left: 0; right: 0; bottom: -8px;
+    border-left: 4px solid #1e7e34;
+    border-right: 4px solid #1e7e34;
     pointer-events: none;
     z-index: 0;
   }
 
-  /* Decorative corner graphic, top-right of every page */
+  /* Decorative corner graphic on the form page */
   .pdf-side-corner {
     position: fixed;
     top: 0;
@@ -148,7 +152,7 @@
   .declaration {
     font-size: 9.5pt;
     text-align: right;
-    margin: 16mm 0;
+    margin: 12mm 0;
     line-height: 1.7;
   }
 
@@ -171,19 +175,15 @@
     min-width: 65mm;
   }
 
-  /* ── Footer ── */
-  .footer {
-    position: fixed;
-    bottom: 6mm;
-    left: 0;
-    right: 0;
-    font-size: 8pt;
-    text-align: center;
-    color: #444;
-  }
+  .photo-page { page-break-before: always; }
+  .photo-page h2 { text-align: center; margin-bottom: 8mm; font-size: 16pt; }
+  .photo-table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+  .photo-table td { width: 50%; height: 108mm; padding: 3mm; text-align: center; vertical-align: middle; }
+  .photo-table img { max-width: 82mm; max-height: 98mm; }
+  .photo-table tr { page-break-inside: avoid; }
 </style>
-
 <div class="border-frame"></div>
+
 <% if @show_side_graphic %>
   <% pdfside_b64 = Base64.strict_encode64(File.read(Rails.root.join("app", "assets", "images", "pdfside.gif"))) %>
   <img class="pdf-side-corner" src="data:image/gif;base64,<%= pdfside_b64 %>">
@@ -320,9 +320,21 @@
     </div>
   </div>
 
-  <%# ── Footer ── %>
-  <div class="footer">
-    المملكة العربية السعودية &nbsp;-&nbsp; ص. ب ١٧٣٥ &nbsp;-&nbsp; الرياض ١١٤١٢ &nbsp;&nbsp;|&nbsp;&nbsp; تلفون: ٠١١٦٩٦٥٢١١ &nbsp;&nbsp;|&nbsp;&nbsp; فاكس: ٠١١٦٩٣٢٥٤٨
-  </div>
 
 </div>
+
+<% @asset.photos.each_slice(4) do |photos| %>
+  <div class="page photo-page">
+    <h2>الصور / Photos</h2>
+    <table class="photo-table">
+      <% photos.each_slice(2) do |row| %>
+        <tr>
+          <% row.each do |photo| %>
+            <td><img src="data:<%= photo.content_type %>;base64,<%= Base64.strict_encode64(photo.download) %>" alt="<%= photo.filename %>"></td>
+          <% end %>
+          <% if row.size == 1 %><td></td><% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>

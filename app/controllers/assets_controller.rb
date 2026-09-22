@@ -37,7 +37,9 @@ class AssetsController < ApplicationController
                encoding: "UTF-8",
                page_size: "A4",
                orientation: "Portrait",
-               margin: { top: 6, bottom: 6, left: 6, right: 6 },
+               margin: { top: 6, bottom: 12, left: 6, right: 6 },
+               header: { content: render_to_string("assets/pdf_header", layout: false, formats: [ :html ]), spacing: 0 },
+               footer: { content: render_to_string("assets/pdf_footer", layout: false, formats: [ :html ]), spacing: 0 },
                disposition: "attachment"
       end
     end
@@ -60,7 +62,8 @@ class AssetsController < ApplicationController
   end
 
   def update
-    if @asset.update(asset_params)
+    if @asset.update(attributes_with_photos)
+      purge_removed_photo_blobs
       redirect_to @asset, notice: "Asset handover form updated successfully."
     else
       render :edit, status: :unprocessable_entity
@@ -78,6 +81,26 @@ class AssetsController < ApplicationController
     @asset = Asset.find(params[:id])
   end
 
+  # Assign together so invalid form edits cannot save attachments independently.
+  def attributes_with_photos
+    attributes = asset_params
+    uploads = attributes.delete(:photos)&.reject(&:blank?) || []
+    @existing_photos = @asset.photos.includes(:blob).to_a
+    @photo_ids_to_remove = params.require(:asset).permit(remove_photo_ids: [])[:remove_photo_ids] || []
+    if uploads.any? || @photo_ids_to_remove.any?
+      retained = @existing_photos.reject { |photo| @photo_ids_to_remove.include?(photo.id.to_s) }
+      @removed_photo_blobs = (@existing_photos - retained).map(&:blob)
+      attributes[:photos] = retained.map(&:blob) + uploads
+    end
+    attributes
+  end
+
+  def purge_removed_photo_blobs
+    Array(@removed_photo_blobs).each do |blob|
+      blob.purge unless blob.attachments.exists?
+    end
+  end
+
   def asset_params
     params.require(:asset).permit(
       :handover_date,
@@ -93,6 +116,7 @@ class AssetsController < ApplicationController
       :received_by_name,
       :received_by_date,
       :signature_received_by,
+      photos: [],
       asset_items_attributes: [
         :id, :item_details, :is_consumable, :is_custody,
         :quantity, :is_new, :is_used, :_destroy
