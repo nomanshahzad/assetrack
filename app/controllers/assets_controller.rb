@@ -84,6 +84,8 @@ class AssetsController < ApplicationController
   # Assign together so invalid form edits cannot save attachments independently.
   def attributes_with_photos
     attributes = asset_params
+    return attributes unless photos_enabled?
+
     uploads = attributes.delete(:photos)&.reject(&:blank?) || []
     @existing_photos = @asset.photos.includes(:blob).to_a
     @photo_ids_to_remove = params.require(:asset).permit(remove_photo_ids: [])[:remove_photo_ids] || []
@@ -101,8 +103,12 @@ class AssetsController < ApplicationController
     end
   end
 
+  def photos_enabled?
+    Rails.configuration.x.photos_enabled
+  end
+
   def asset_params
-    params.require(:asset).permit(
+    permitted = params.require(:asset).permit(
       :handover_date,
       :receiver_name,
       :receiver_employee_number,
@@ -122,5 +128,7 @@ class AssetsController < ApplicationController
         :quantity, :is_new, :is_used, :_destroy
       ]
     )
+    permitted.delete(:photos) unless photos_enabled?
+    permitted
   end
 end

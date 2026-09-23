@@ -323,6 +323,7 @@
 
 </div>
 
+<% if Rails.configuration.x.photos_enabled %>
 <% @asset.photos.each_slice(4) do |photos| %>
   <div class="page photo-page">
     <h2>الصور / Photos</h2>
@@ -337,4 +338,5 @@
       <% end %>
     </table>
   </div>
+<% end %>
 <% end %>

@@ -18,6 +18,7 @@ module Assetrack
 
     config.i18n.available_locales = %i[en ar]
     config.i18n.default_locale = :en
+    config.x.photos_enabled = ENV.fetch("PHOTOS_ENABLED", "false") == "true"
 
     # Configuration for the application, engines, and railties goes here.
     #

@@ -241,7 +241,7 @@
       </div>
     </div>
 
-    <% if @asset.photos.attached? %>
+    <% if Rails.configuration.x.photos_enabled && @asset.photos.attached? %>
       <section class="bg-white rounded-xl border border-slate-200 p-6">
         <h3 class="text-sm font-semibold text-slate-700 mb-4"><%= t("assets.photos.title") %></h3>
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">

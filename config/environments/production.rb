@@ -23,7 +23,11 @@ Rails.application.configure do
 
   # Production uploads must use durable object storage. Container filesystems on
   # hosts such as Render are replaced during deploys and restarts.
-  config.active_storage.service = ENV.fetch("ACTIVE_STORAGE_SERVICE", "amazon").to_sym
+  config.active_storage.service = if config.x.photos_enabled
+    ENV.fetch("ACTIVE_STORAGE_SERVICE", "local").to_sym
+  else
+    :local
+  end
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
   # Required on Render, which terminates TLS and proxies to the container over plain HTTP.

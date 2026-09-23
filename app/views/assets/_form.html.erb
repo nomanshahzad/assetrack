@@ -122,7 +122,9 @@
 
   </div>
 
-  <%= render "photo_fields", f: f, asset: asset %>
+  <% if Rails.configuration.x.photos_enabled %>
+    <%= render "photo_fields", f: f, asset: asset %>
+  <% end %>
 
   <%# ── Section 5: Notes ────────────────────────────────────────────── %>
   <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
