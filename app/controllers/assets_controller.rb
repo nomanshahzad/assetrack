@@ -51,7 +51,7 @@ class AssetsController < ApplicationController
   end
 
   def new
-    @asset = Asset.new
+    @asset = Asset.new(handover_date: Date.current)
   end
 
   def create
