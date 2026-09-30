@@ -4,7 +4,7 @@
   <div class="flex items-center justify-between mb-6">
     <div>
       <h1 class="text-2xl font-bold text-slate-900"><%= t("assets.index.title") %></h1>
-      <p class="mt-1 text-sm text-slate-500"><%= t("assets.index.subtitle", count: @pagy.count) %></p>
+      <p class="mt-1 text-sm text-slate-500"><%= t("assets.index.subtitle", count: @total_count) %></p>
     </div>
     <%= link_to t("assets.index.new_button"), new_asset_path, class: "flex items-center gap-2 px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white text-sm font-semibold shadow-sm transition" %>
   </div>
@@ -21,7 +21,7 @@
 
   <%# Search & Filters %>
   <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4 mb-6">
-    <%= form_with url: assets_path, method: :get, data: { controller: "filter-form", turbo_action: "advance" },
+    <%= form_with url: assets_path, method: :get, data: { controller: "filter-form", turbo_frame: "results", turbo_action: "advance" },
           class: "flex flex-col lg:flex-row lg:items-center gap-3" do %>
 
       <%# Search %>
@@ -63,6 +63,8 @@
       </div>
     <% end %>
   </div>
+
+  <%= turbo_frame_tag "results" do %>
 
   <% if @assets.any? %>
 
@@ -232,6 +234,8 @@
       <p class="text-slate-500 text-sm mt-1"><%= t("assets.index.empty_description") %></p>
       <%= link_to t("assets.index.new_button"), new_asset_path, class: "mt-5 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold shadow-sm transition" %>
     </div>
+
+  <% end %>
 
   <% end %>
 
