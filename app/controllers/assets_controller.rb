@@ -20,6 +20,11 @@ class AssetsController < ApplicationController
 
   def index
     @assets = Asset.order(created_at: :desc)
+                   .search(params[:search])
+                   .by_date_range(params[:date_from], params[:date_to])
+    @pagy, @assets = pagy(@assets)
+    @total_count = Asset.count
+    @filters_active = [ params[:search], params[:date_from], params[:date_to] ].any?(&:present?)
   end
 
   def show

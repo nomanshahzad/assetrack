@@ -19,6 +19,17 @@ ar:
       new_button: "نموذج جديد"
       empty_title: "لا توجد نماذج مقدمة بعد"
       empty_description: "أنشئ أول نموذج تسليم للأصول للبدء."
+      no_results_title: "لا توجد نتائج"
+      no_results_description: "حاول تعديل البحث أو عوامل التصفية."
+    filters:
+      search_placeholder: "البحث بالاسم، الرقم الوظيفي، الفرع، أو تفاصيل الأصناف..."
+      from: "من"
+      to: "إلى"
+      clear: "مسح"
+    pagination:
+      showing: "عرض %{from}–%{to} من %{count} نتيجة"
+      previous: "السابق"
+      next: "التالي"
     new:
       title: "نموذج تسليم أصول جديد"
       breadcrumb: "نموذج جديد"

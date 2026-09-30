@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Authentication
+  include Pagy::Backend
   stale_when_importmap_changes
 
   before_action :set_locale
