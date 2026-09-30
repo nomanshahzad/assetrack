@@ -64,7 +64,7 @@
     <% end %>
   </div>
 
-  <%= turbo_frame_tag "results" do %>
+  <%= turbo_frame_tag "results", target: "_top" do %>
 
   <% if @assets.any? %>
 
