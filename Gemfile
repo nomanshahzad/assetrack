@@ -45,6 +45,8 @@ gem "aws-sdk-s3", require: false
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
 
+gem "pagy", "~> 9.0"
+
 
 group :production do
   # Use PostgreSQL as the database for Active Record in production (e.g. Neon)

@@ -10,6 +10,20 @@ class Asset < ApplicationRecord
   validates :receiver_branch_department, presence: true
   validate :acceptable_photos
 
+  scope :search, ->(query) {
+    return all if query.blank?
+    q = "%#{sanitize_sql_like(query)}%"
+    where("receiver_name LIKE :q OR receiver_employee_number LIKE :q OR receiver_branch_department LIKE :q", q: q)
+      .or(where(id: AssetItem.where("item_details LIKE ?", q).select(:asset_id)))
+  }
+
+  scope :by_date_range, ->(date_from, date_to) {
+    rel = all
+    rel = rel.where("handover_date >= ?", date_from) if date_from.present?
+    rel = rel.where("handover_date <= ?", date_to) if date_to.present?
+    rel
+  }
+
   private
 
   def acceptable_photos

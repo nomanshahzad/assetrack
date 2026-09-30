@@ -19,6 +19,17 @@ en:
       new_button: "New Form"
       empty_title: "No forms submitted yet"
       empty_description: "Create your first asset handover form to get started."
+      no_results_title: "No results found"
+      no_results_description: "Try adjusting your search or filters."
+    filters:
+      search_placeholder: "Search by name, employee #, branch, or item details..."
+      from: "From"
+      to: "To"
+      clear: "Clear"
+    pagination:
+      showing: "Showing %{from}–%{to} of %{count} results"
+      previous: "Previous"
+      next: "Next"
     new:
       title: "New Asset Handover Form"
       breadcrumb: "New Handover Form"
