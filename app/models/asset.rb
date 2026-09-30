@@ -12,9 +12,9 @@ class Asset < ApplicationRecord
 
   scope :search, ->(query) {
     return all if query.blank?
-    q = "%#{sanitize_sql_like(query)}%"
-    where("receiver_name LIKE :q OR receiver_employee_number LIKE :q OR receiver_branch_department LIKE :q", q: q)
-      .or(where(id: AssetItem.where("item_details LIKE ?", q).select(:asset_id)))
+    q = "%#{sanitize_sql_like(query.downcase)}%"
+    where("LOWER(receiver_name) LIKE :q OR LOWER(receiver_employee_number) LIKE :q OR LOWER(receiver_branch_department) LIKE :q", q: q)
+      .or(where(id: AssetItem.where("LOWER(item_details) LIKE ?", q).select(:asset_id)))
   }
 
   scope :by_date_range, ->(date_from, date_to) {
