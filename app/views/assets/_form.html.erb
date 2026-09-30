@@ -58,16 +58,16 @@
     <div class="bg-slate-50 border-b border-slate-200 px-6 py-3">
       <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide"><%= t("assets.sections.item_type") %></h3>
     </div>
-    <div class="px-6 py-5 flex flex-col sm:flex-row gap-6">
+    <div class="px-6 py-5 flex flex-col sm:flex-row gap-6" data-controller="mutual-exclusive">
       <label class="flex items-center gap-3 cursor-pointer">
-        <%= f.check_box :is_consumable, class: "w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" %>
+        <%= f.check_box :is_consumable, class: "w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer", data: { "mutual-exclusive-target": "checkbox", action: "change->mutual-exclusive#toggle" } %>
         <div>
           <span class="block text-sm font-medium text-slate-800"><%= t("assets.fields.is_consumable") %></span>
           <span class="block text-xs text-slate-500"><%= t("assets.item_descriptions.consumable") %></span>
         </div>
       </label>
       <label class="flex items-center gap-3 cursor-pointer">
-        <%= f.check_box :is_custody, class: "w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" %>
+        <%= f.check_box :is_custody, class: "w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer", data: { "mutual-exclusive-target": "checkbox", action: "change->mutual-exclusive#toggle" } %>
         <div>
           <span class="block text-sm font-medium text-slate-800"><%= t("assets.fields.is_custody") %></span>
           <span class="block text-xs text-slate-500"><%= t("assets.item_descriptions.custody") %></span>
