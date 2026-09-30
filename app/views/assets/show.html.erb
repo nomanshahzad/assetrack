@@ -115,8 +115,7 @@
                 <th class="px-4 py-2.5 text-center w-10"><%= t("asset_items.no") %></th>
                 <th class="px-4 py-2.5 text-start"><%= t("asset_items.item_details") %></th>
                 <th class="px-4 py-2.5 text-center"><%= t("asset_items.quantity") %></th>
-                <th class="px-4 py-2.5 text-center"><%= t("asset_items.is_new") %></th>
-                <th class="px-4 py-2.5 text-center"><%= t("asset_items.is_used") %></th>
+                <th class="px-4 py-2.5 text-center"><%= t("asset_items.condition") %></th>
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100">
@@ -126,15 +125,10 @@
                   <td class="px-4 py-3 text-slate-900"><%= item.item_details.presence || "—" %></td>
                   <td class="px-4 py-3 text-center text-slate-900"><%= item.quantity.presence || "—" %></td>
                   <td class="px-4 py-3 text-center">
-                    <% if item.is_new? %>
-                      <span class="inline-block w-4 h-4 rounded-full bg-green-500"></span>
-                    <% else %>
-                      <span class="text-slate-300">—</span>
-                    <% end %>
-                  </td>
-                  <td class="px-4 py-3 text-center">
-                    <% if item.is_used? %>
-                      <span class="inline-block w-4 h-4 rounded-full bg-amber-500"></span>
+                    <% if item.condition == "new" %>
+                      <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-700"><%= t("asset_items.condition_new") %></span>
+                    <% elsif item.condition == "used" %>
+                      <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700"><%= t("asset_items.condition_used") %></span>
                     <% else %>
                       <span class="text-slate-300">—</span>
                     <% end %>

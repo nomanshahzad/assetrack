@@ -129,7 +129,7 @@ class AssetsController < ApplicationController
       :signature_received_by,
       photos: [],
       asset_items_attributes: [
-        :id, :item_details, :quantity, :is_new, :is_used, :_destroy
+        :id, :item_details, :quantity, :condition, :_destroy
       ]
     )
     permitted.delete(:photos) unless photos_enabled?
