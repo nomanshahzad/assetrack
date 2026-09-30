@@ -96,8 +96,6 @@ en:
     section: "Item Details Table"
     no: "No."
     item_details: "Item Details"
-    is_consumable: "Consumable"
-    is_custody: "Custody"
     quantity: "Quantity"
     is_new: "New"
     is_used: "Used"

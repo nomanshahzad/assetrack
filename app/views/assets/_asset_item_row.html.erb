@@ -13,22 +13,6 @@
           class: "block w-full rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" %>
   </td>
 
-  <%# Consumable %>
-  <td class="block px-4 py-2 sm:table-cell sm:px-3 sm:py-2 sm:text-center">
-    <label class="flex items-center gap-2 sm:justify-center cursor-pointer">
-      <%= f.check_box :is_consumable, class: "w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" %>
-      <span class="text-sm text-slate-700 sm:hidden"><%= t("asset_items.is_consumable") %></span>
-    </label>
-  </td>
-
-  <%# Custody %>
-  <td class="block px-4 py-2 sm:table-cell sm:px-3 sm:py-2 sm:text-center">
-    <label class="flex items-center gap-2 sm:justify-center cursor-pointer">
-      <%= f.check_box :is_custody, class: "w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" %>
-      <span class="text-sm text-slate-700 sm:hidden"><%= t("asset_items.is_custody") %></span>
-    </label>
-  </td>
-
   <%# Quantity ── block on mobile with label %>
   <td class="block px-4 py-3 sm:table-cell sm:px-3 sm:py-2 sm:w-24">
     <label class="block text-xs font-medium text-slate-500 mb-1 sm:hidden"><%= t("asset_items.quantity") %></label>

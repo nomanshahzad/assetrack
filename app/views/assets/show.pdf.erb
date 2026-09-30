@@ -242,8 +242,6 @@
       <tr>
         <th class="col-no">م</th>
         <th class="col-det">بيانات الأصناف</th>
-        <th class="col-chk">استهلاكية</th>
-        <th class="col-chk">عهدة</th>
         <th class="col-qty">الكمية</th>
         <th class="col-chk">جديد</th>
         <th class="col-chk">مستعمل</th>
@@ -255,8 +253,6 @@
         <tr>
           <td><%= i + 1 %></td>
           <td class="col-det">&nbsp;<%= item&.item_details %></td>
-          <td><%= raw(item&.is_consumable? ? "&#10003;" : "") %></td>
-          <td><%= raw(item&.is_custody?    ? "&#10003;" : "") %></td>
           <td><%= item&.quantity %></td>
           <td><%= raw(item&.is_new?  ? "&#10003;" : "") %></td>
           <td><%= raw(item&.is_used? ? "&#10003;" : "") %></td>
