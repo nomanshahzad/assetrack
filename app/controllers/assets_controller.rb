@@ -122,10 +122,8 @@ class AssetsController < ApplicationController
       :is_custody,
       :notes,
       :delivered_by_name,
-      :delivered_by_date,
       :signature_delivered_by,
       :received_by_name,
-      :received_by_date,
       :signature_received_by,
       photos: [],
       asset_items_attributes: [

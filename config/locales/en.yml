@@ -63,9 +63,7 @@ en:
       is_custody: "Custody / Assigned Asset"
       notes: "Notes"
       delivered_by_name: "Name"
-      delivered_by_date: "Date"
       received_by_name: "Name"
-      received_by_date: "Date"
       signature: "Signature"
       clear_signature: "Clear"
 

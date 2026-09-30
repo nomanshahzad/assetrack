@@ -288,10 +288,6 @@
           <span class="sig-line">&nbsp;</span>
         <% end %>
       </div>
-      <div class="sig-field">
-        التاريخ :&nbsp;
-        <span class="sig-line">&nbsp;<%= @asset.received_by_date&.strftime("%Y/%m/%d") %>&nbsp;</span>
-      </div>
     </div>
     <div class="sig-col">
       <div class="sig-title">التوقيع بالتسليم</div>
@@ -308,10 +304,6 @@
         <% else %>
           <span class="sig-line">&nbsp;</span>
         <% end %>
-      </div>
-      <div class="sig-field">
-        التاريخ :&nbsp;
-        <span class="sig-line">&nbsp;<%= @asset.delivered_by_date&.strftime("%Y/%m/%d") %>&nbsp;</span>
       </div>
     </div>
   </div>

@@ -63,9 +63,7 @@ ar:
       is_custody: "عهدة"
       notes: "ملاحظات"
       delivered_by_name: "الاسم"
-      delivered_by_date: "التاريخ"
       received_by_name: "الاسم"
-      received_by_date: "التاريخ"
       signature: "التوقيع"
       clear_signature: "مسح"
 

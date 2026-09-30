@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_30_203409) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_30_204927) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -51,13 +51,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_30_203409) do
 
   create_table "assets", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.date "delivered_by_date"
     t.string "delivered_by_name"
     t.date "handover_date"
     t.boolean "is_consumable", default: false, null: false
     t.boolean "is_custody", default: false, null: false
     t.text "notes"
-    t.date "received_by_date"
     t.string "received_by_name"
     t.string "receiver_branch_department"
     t.string "receiver_employee_number"
