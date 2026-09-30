@@ -158,22 +158,23 @@
 
   /* ── Signatures ── */
   .sig-wrap { display: table; width: 100%; margin-top: 3mm; }
-  .sig-col  { display: table-cell; width: 50%; vertical-align: top; padding: 0 4mm; }
+  .sig-col  { display: table-cell; width: 33.33%; vertical-align: top; padding: 0 3mm; }
   .sig-title { font-size: 11pt; font-weight: bold; text-align: center; margin-bottom: 5mm; }
   .sig-field { font-size: 12pt; margin-bottom: 8mm; }
   .sig-line {
-    display: inline-block;
+    display: block;
+    margin-top: 4mm;
     border-bottom: 1px solid #666;
-    min-width: 65mm;
+    min-width: 0;
     padding: 0 3px;
-    vertical-align: bottom;
   }
   .sig-img-wrap {
-    display: inline-block;
+    display: block;
+    margin-top: 4mm;
     border-bottom: 1px solid #666;
-    vertical-align: bottom;
-    min-width: 65mm;
+    min-width: 0;
   }
+  .sig-img-wrap img { max-width: 100% !important; }
 
   .photo-page { page-break-before: always; }
   .photo-page h2 { text-align: center; margin-bottom: 8mm; font-size: 16pt; }
@@ -300,6 +301,23 @@
         <% if @asset.signature_delivered_by.present? %>
           <span class="sig-img-wrap">
             <img src="<%= @asset.signature_delivered_by %>" style="height:44px; max-width:70mm; vertical-align:bottom; display:block;">
+          </span>
+        <% else %>
+          <span class="sig-line">&nbsp;</span>
+        <% end %>
+      </div>
+    </div>
+    <div class="sig-col">
+      <div class="sig-title">اعتماد مدير تقنية المعلومات</div>
+      <div class="sig-field">
+        الاسم :&nbsp;
+        <span class="sig-line">&nbsp;<%= Asset::IT_MANAGER_NAME %>&nbsp;</span>
+      </div>
+      <div class="sig-field">
+        التوقيع :&nbsp;
+        <% if @asset.signature_it_manager.present? %>
+          <span class="sig-img-wrap">
+            <img src="<%= @asset.signature_it_manager %>" style="height:44px; max-width:70mm; vertical-align:bottom; display:block;">
           </span>
         <% else %>
           <span class="sig-line">&nbsp;</span>

@@ -53,9 +53,11 @@ en:
       notes: "Notes"
       delivered_by: "Delivered By"
       received_by: "Received By"
+      approved_by_it_manager: "Approved by IT Manager"
 
     fields:
       handover_date: "Date"
+      it_manager_name: "Name"
       receiver_name: "Name"
       receiver_employee_number: "Employee Number"
       receiver_branch_department: "Branch / Department"

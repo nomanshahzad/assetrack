@@ -125,6 +125,7 @@ class AssetsController < ApplicationController
       :signature_delivered_by,
       :received_by_name,
       :signature_received_by,
+      :signature_it_manager,
       photos: [],
       asset_items_attributes: [
         :id, :item_details, :quantity, :condition, :_destroy

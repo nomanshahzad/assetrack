@@ -1,4 +1,6 @@
 class Asset < ApplicationRecord
+  IT_MANAGER_NAME = "Ahmed Reshad".freeze
+
   has_many_attached :photos
 
   has_many :asset_items, dependent: :destroy

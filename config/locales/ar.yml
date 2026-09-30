@@ -53,9 +53,11 @@ ar:
       notes: "ملاحظات"
       delivered_by: "التوقيع بالتسليم"
       received_by: "التوقيع بالاستلام"
+      approved_by_it_manager: "اعتماد مدير تقنية المعلومات"
 
     fields:
       handover_date: "التاريخ"
+      it_manager_name: "الاسم"
       receiver_name: "الاسم"
       receiver_employee_number: "الرقم الوظيفي"
       receiver_branch_department: "الفرع أو القسم"

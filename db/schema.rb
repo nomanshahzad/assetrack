@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_30_204927) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_30_210815) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -61,6 +61,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_30_204927) do
     t.string "receiver_employee_number"
     t.string "receiver_name"
     t.text "signature_delivered_by"
+    t.text "signature_it_manager"
     t.text "signature_received_by"
     t.datetime "updated_at", null: false
   end
