@@ -161,18 +161,19 @@
   .sig-col  { display: table-cell; width: 33.33%; vertical-align: top; padding: 0 3mm; }
   .sig-title { font-size: 11pt; font-weight: bold; text-align: center; margin-bottom: 5mm; }
   .sig-field { font-size: 12pt; margin-bottom: 8mm; }
+  .sig-label { display: inline-block; width: 18mm; vertical-align: bottom; }
   .sig-line {
-    display: block;
-    margin-top: 4mm;
+    display: inline-block;
     border-bottom: 1px solid #666;
-    min-width: 0;
+    width: 45mm;
     padding: 0 3px;
+    vertical-align: bottom;
   }
   .sig-img-wrap {
-    display: block;
-    margin-top: 4mm;
+    display: inline-block;
     border-bottom: 1px solid #666;
-    min-width: 0;
+    width: 45mm;
+    vertical-align: bottom;
   }
   .sig-img-wrap img { max-width: 100% !important; }
 
@@ -269,11 +270,11 @@
     <div class="sig-col">
       <div class="sig-title">التوقيع بالاستلام</div>
       <div class="sig-field">
-        الاسم :&nbsp;
+        <span class="sig-label">الاسم :</span>
         <span class="sig-line">&nbsp;<%= @asset.received_by_name %>&nbsp;</span>
       </div>
       <div class="sig-field">
-        التوقيع :&nbsp;
+        <span class="sig-label">التوقيع :</span>
         <% if @asset.signature_received_by.present? %>
           <span class="sig-img-wrap">
             <img src="<%= @asset.signature_received_by %>" style="height:44px; max-width:70mm; vertical-align:bottom; display:block;">
@@ -286,11 +287,11 @@
     <div class="sig-col">
       <div class="sig-title">التوقيع بالتسليم</div>
       <div class="sig-field">
-        الاسم :&nbsp;
+        <span class="sig-label">الاسم :</span>
         <span class="sig-line">&nbsp;<%= @asset.delivered_by_name %>&nbsp;</span>
       </div>
       <div class="sig-field">
-        التوقيع :&nbsp;
+        <span class="sig-label">التوقيع :</span>
         <% if @asset.signature_delivered_by.present? %>
           <span class="sig-img-wrap">
             <img src="<%= @asset.signature_delivered_by %>" style="height:44px; max-width:70mm; vertical-align:bottom; display:block;">
@@ -303,11 +304,11 @@
     <div class="sig-col">
       <div class="sig-title">اعتماد مدير قسم تقنية المعلومات</div>
       <div class="sig-field">
-        الاسم :&nbsp;
+        <span class="sig-label">الاسم :</span>
         <span class="sig-line">&nbsp;<%= Asset::IT_MANAGER_NAME_AR %>&nbsp;</span>
       </div>
       <div class="sig-field">
-        التوقيع :&nbsp;
+        <span class="sig-label">التوقيع :</span>
         <% if @asset.signature_it_manager.present? %>
           <span class="sig-img-wrap">
             <img src="<%= @asset.signature_it_manager %>" style="height:44px; max-width:70mm; vertical-align:bottom; display:block;">
