@@ -178,6 +178,14 @@
     vertical-align: bottom;
   }
   .sig-img-wrap img { max-width: 100% !important; margin: 0 auto; }
+  /* Same width as label + line, padded past the label so the stamp centres under the line */
+  .sig-stamp { width: 63mm; padding-right: 18mm; text-align: center; margin-top: -4mm; }
+  .sig-stamp img {
+    width: 45mm;
+    opacity: 0.9;
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
 
   .photo-page { page-break-before: always; }
   .photo-page h2 { text-align: center; margin-bottom: 8mm; font-size: 16pt; }
@@ -319,6 +327,10 @@
           <span class="sig-img-wrap"></span>
         <% end %>
       </div>
+      <% if @asset.signature_it_manager.present? %>
+        <% stamp_b64 = Base64.strict_encode64(File.binread(Rails.root.join("app", "assets", "images", @stamp_filename))) %>
+        <div class="sig-stamp"><img src="data:image/png;base64,<%= stamp_b64 %>"></div>
+      <% end %>
     </div>
   </div>
 

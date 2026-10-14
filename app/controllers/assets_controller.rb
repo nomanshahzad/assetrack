@@ -5,6 +5,7 @@ class AssetsController < ApplicationController
       logo_height: 150,
       name_en: "AL HANOUF CONTRACTING GROUP",
       name_ar: "مجموعة الهنوف للمقاولات",
+      stamp_filename: "it_manager_stamp1.png",
       side_graphic: true
     },
     "2" => {
@@ -12,6 +13,7 @@ class AssetsController < ApplicationController
       logo_height: 190,
       name_en: "HERASATEKOM EST. FOR SECURITY SERVICE",
       name_ar: "مؤسسة حراساتكم للحراسات الأمنية",
+      stamp_filename: "it_manager_stamp2.png",
       side_graphic: false
     }
   }.freeze
@@ -36,6 +38,7 @@ class AssetsController < ApplicationController
         @logo_height = company[:logo_height]
         @company_name_en = company[:name_en]
         @company_name_ar = company[:name_ar]
+        @stamp_filename = company[:stamp_filename]
         @show_side_graphic = company[:side_graphic]
         render pdf: "handover-form-#{@asset.id}",
                layout: "pdf",
