@@ -96,7 +96,7 @@
   }
 
   /* ── Section label ── */
-  .slabel { font-size: 10pt; font-weight: bold; margin-bottom: 7mm; }
+  .slabel { font-size: 11pt; font-weight: bold; margin-bottom: 7mm; }
 
   /* ── Field rows ── */
   .frow { font-size: 12pt; margin-bottom: 7mm; }
@@ -206,7 +206,7 @@
 
   <%# ── Date ── %>
   <div class="date-row">
-    التاريخ :&nbsp;&nbsp;<span class="dots">&nbsp;<%= @asset.handover_date&.strftime("%Y/%m/%d") %>&nbsp;</span>
+    <b>التاريخ :</b>&nbsp;&nbsp;<span class="dots">&nbsp;<%= @asset.handover_date&.strftime("%Y/%m/%d") %>&nbsp;</span>
   </div>
 
   <%# ── Title ── %>
