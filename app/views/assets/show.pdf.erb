@@ -100,10 +100,11 @@
 
   /* ── Field rows ── */
   .frow { font-size: 12pt; margin-bottom: 7mm; }
+  .flabel { display: inline-block; width: 30mm; }
   .fval {
     display: inline-block;
     border-bottom: 1px solid #666;
-    min-width: 110mm;
+    width: 45mm;
     padding: 1px 4px;
     vertical-align: bottom;
   }
@@ -218,16 +219,13 @@
   <div class="slabel">بيانات المستلم</div>
 
   <div class="frow">
-    الاسم :&nbsp;
-    <span class="fval">&nbsp;<%= @asset.receiver_name %>&nbsp;</span>
+    <span class="flabel">اسم الموظف :</span><span class="fval">&nbsp;<%= @asset.receiver_name %>&nbsp;</span>
   </div>
   <div class="frow">
-    رقم الوظيفة :&nbsp;
-    <span class="fval">&nbsp;<%= @asset.receiver_employee_number %>&nbsp;</span>
+    <span class="flabel">رقم الوظيفة :</span><span class="fval">&nbsp;<%= @asset.receiver_employee_number %>&nbsp;</span>
   </div>
   <div class="frow">
-    الموقع/ قسم :&nbsp;
-    <span class="fval">&nbsp;<%= @asset.receiver_branch_department %>&nbsp;</span>
+    <span class="flabel">الموقع/ قسم :</span><span class="fval">&nbsp;<%= @asset.receiver_branch_department %>&nbsp;</span>
   </div>
 
   <%# ── Item Type ── %>
