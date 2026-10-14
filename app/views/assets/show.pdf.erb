@@ -182,6 +182,8 @@
      No opacity/transform: wkhtmltopdf rasterises those at low resolution and blurs the stamp. */
   .sig-stamp { width: 65.5mm; padding-right: 15.5mm; margin-top: -4mm; }
   .sig-stamp img { width: 50mm; display: block; }
+  .sig-stamp--staff { width: 60.5mm; padding-right: 20.5mm; }
+  .sig-stamp--staff img { width: 40mm; }
 
   .photo-page { page-break-before: always; }
   .photo-page h2 { text-align: center; margin-bottom: 8mm; font-size: 16pt; }
@@ -306,6 +308,8 @@
           <span class="sig-img-wrap"></span>
         <% end %>
       </div>
+      <% staff_stamp_b64 = Base64.strict_encode64(File.binread(Rails.root.join("app", "assets", "images", "staff_stamp_asif.png"))) %>
+      <div class="sig-stamp sig-stamp--staff"><img src="data:image/png;base64,<%= staff_stamp_b64 %>"></div>
     </div>
     <div class="sig-col">
       <div class="sig-title">اعتماد مدير قسم تقنية المعلومات</div>
