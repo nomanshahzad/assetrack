@@ -173,6 +173,7 @@
     display: inline-block;
     border-bottom: 1px solid #666;
     width: 45mm;
+    height: 45px;
     vertical-align: bottom;
   }
   .sig-img-wrap img { max-width: 100% !important; }
@@ -280,7 +281,7 @@
             <img src="<%= @asset.signature_received_by %>" style="height:44px; max-width:70mm; vertical-align:bottom; display:block;">
           </span>
         <% else %>
-          <span class="sig-line">&nbsp;</span>
+          <span class="sig-img-wrap"></span>
         <% end %>
       </div>
     </div>
@@ -297,7 +298,7 @@
             <img src="<%= @asset.signature_delivered_by %>" style="height:44px; max-width:70mm; vertical-align:bottom; display:block;">
           </span>
         <% else %>
-          <span class="sig-line">&nbsp;</span>
+          <span class="sig-img-wrap"></span>
         <% end %>
       </div>
     </div>
@@ -314,7 +315,7 @@
             <img src="<%= @asset.signature_it_manager %>" style="height:44px; max-width:70mm; vertical-align:bottom; display:block;">
           </span>
         <% else %>
-          <span class="sig-line">&nbsp;</span>
+          <span class="sig-img-wrap"></span>
         <% end %>
       </div>
     </div>
