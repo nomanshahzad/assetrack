@@ -178,14 +178,10 @@
     vertical-align: bottom;
   }
   .sig-img-wrap img { max-width: 100% !important; margin: 0 auto; }
-  /* Same width as label + line, padded past the label so the stamp centres under the line */
-  .sig-stamp { width: 63mm; padding-right: 18mm; text-align: center; margin-top: -4mm; }
-  .sig-stamp img {
-    width: 45mm;
-    opacity: 0.9;
-    -webkit-transform: rotate(-6deg);
-    transform: rotate(-6deg);
-  }
+  /* Centred under the signature line (label 18mm + half of line 22.5mm = 40.5mm from the right).
+     No opacity/transform: wkhtmltopdf rasterises those at low resolution and blurs the stamp. */
+  .sig-stamp { width: 65.5mm; padding-right: 15.5mm; margin-top: -4mm; }
+  .sig-stamp img { width: 50mm; display: block; }
 
   .photo-page { page-break-before: always; }
   .photo-page h2 { text-align: center; margin-bottom: 8mm; font-size: 16pt; }
