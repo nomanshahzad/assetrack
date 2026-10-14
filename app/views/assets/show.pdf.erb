@@ -134,7 +134,7 @@
   .itable td { font-size: 11pt; height: 9mm; }
   .col-no   { width: 8mm; }
   .col-det  { text-align: right !important; padding-right: 5px !important; }
-  .col-chk  { width: 16mm; }
+  .col-cond { width: 22mm; }
   .col-qty  { width: 13mm; }
 
   /* ── Notes ── */
@@ -232,9 +232,7 @@
 
   <%# ── Item Type ── %>
   <div class="item-type">
-    استهلاكية :&nbsp;<span class="item-val"><%= raw(@asset.is_consumable? ? "&nbsp;&#10003;&nbsp;" : "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") %></span>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    عهدة :&nbsp;<span class="item-val"><%= raw(@asset.is_custody? ? "&nbsp;&#10003;&nbsp;" : "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") %></span>
+    نوع الصنف :&nbsp;<span class="item-val">&nbsp;<%= @asset.is_consumable? ? "استهلاكية" : (@asset.is_custody? ? "عهدة" : "") %>&nbsp;</span>
   </div>
 
   <%# ── Items Table ── %>
@@ -244,8 +242,7 @@
         <th class="col-no">م</th>
         <th class="col-det">بيانات الأصناف</th>
         <th class="col-qty">الكمية</th>
-        <th class="col-chk">جديد</th>
-        <th class="col-chk">مستعمل</th>
+        <th class="col-cond">الحالة</th>
       </tr>
     </thead>
     <tbody>
@@ -255,8 +252,7 @@
           <td><%= i + 1 %></td>
           <td class="col-det">&nbsp;<%= item&.item_details %></td>
           <td><%= item&.quantity %></td>
-          <td><%= raw(item&.condition == "new"  ? "&#10003;" : "") %></td>
-          <td><%= raw(item&.condition == "used" ? "&#10003;" : "") %></td>
+          <td><%= { "new" => "جديد", "used" => "مستعمل" }[item&.condition] %></td>
         </tr>
       <% end %>
     </tbody>
