@@ -1,5 +1,6 @@
 class Asset < ApplicationRecord
-  IT_MANAGER_NAME = "Ahmed Reshad".freeze
+  IT_MANAGER_NAME = "Engineer Ahmed Reshad".freeze
+  IT_MANAGER_NAME_AR = "مهندس أحمد رشاد".freeze
 
   has_many_attached :photos
 
